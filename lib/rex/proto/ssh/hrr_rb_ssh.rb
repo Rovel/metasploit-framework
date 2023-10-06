@@ -10,6 +10,18 @@ require 'hrr_rb_ssh'
 module HrrRbSsh
 class Connection
 
+  @@existing_connection = nil  # Class variable to hold an existing connection
+  alias_method :original_initialize, :initialize  # Alias the original initialize method
+
+  def initialize(*args)
+    return @@existing_connection if @@existing_connection  # Return existing connection if it exists https://github.com/rapid7/metasploit-framework/issues/18401
+
+    original_initialize(*args)  # Call the original initialize method
+
+    @@existing_connection = self  # Store this connection as the existing connection
+  end
+end
+
 class GlobalRequestHandler
   def tcpip_forward(message)
     if @connection.permit?(message[:'address to bind'], message[:'port number to bind'], true)
